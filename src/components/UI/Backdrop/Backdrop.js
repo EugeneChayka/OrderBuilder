@@ -6,7 +6,7 @@ const backdrop = props => (
         className={classes.Backdrop} 
         onClick={props.clicked}
         style={{
-            opacity: props.show ? (setTimeout(()=>'1',)) : '0'
+            opacity: props.show ? '1' : '0'
         }}   
     ></div> : null
 )

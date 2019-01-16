@@ -14,11 +14,11 @@ const CheckoutSummary = props => {
             </div>
             <Button
                 btnType='Danger'
-                clicked
+                clicked = {() => console.log('clicked!')}
             >CANCEL</Button>
             <Button
                 btnType='Success'
-                clicked
+                clicked = {() => console.log('clicked!')}
             >CONTINUE</Button>
         </div>
     )

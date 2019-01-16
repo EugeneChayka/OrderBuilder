@@ -7,12 +7,8 @@ const navigationItem = props => (
     <li className={classes.NavigationItem}>
         <NavLink 
             to={props.link} 
-            activeStyle={{
-                backgrounColor: '#8f5c2c',
-                borderBottom: '4px solid #40a4c8',
-                color: 'white'
-            }}
-            exact
+            activeClassName={classes.active}
+            exact={props.exact}
         >
             {props.children}
         </NavLink>

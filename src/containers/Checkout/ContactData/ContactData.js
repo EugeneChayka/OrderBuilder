@@ -112,15 +112,6 @@ class ContactData extends Component {
             price: this.props.price, //this must be on the server
             orderData: formData
         }
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({ loading: false })
-                this.props.history.push('/')
-            })
-            .catch(error => {
-                this.setState({ loading: false })
-            })
-
     }
 
     checkValidity(value, rules) {

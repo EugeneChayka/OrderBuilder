@@ -6,7 +6,7 @@ export const addIngredient = (ingName) => ({
     ingredientName: ingName
 })
 export const removeIngredient = (ingName) => ({
-    type: actionTypes.ADD_INGREDIENT,
+    type: actionTypes.REMOVE_INGREDIENT,
     ingredientName: ingName
 })
 

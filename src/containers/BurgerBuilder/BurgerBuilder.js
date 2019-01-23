@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import Aux from '../../HOC/Aux/Aux';
 import Burger from '../../components/Burger/Burger'
@@ -9,7 +9,7 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import Spinner from '../../components/UI/Spinner/Spinner'
 import withErrorHandler from '../../HOC/withErrorHandler/withErrorHandler'
 import axios from '../../axios-orders';
-import * as actionTypes from '../../store/actions'
+import * as burgerBuilderActions from '../../store/actions/index'
 
 class BurgerBuilder extends Component {
     state = {
@@ -20,13 +20,13 @@ class BurgerBuilder extends Component {
 
     componentDidMount() {
         console.log('<BurgerBuilder> Did Mount')
-    //     axios.get('/ingredients.json')
-    //         .then(response => {
-    //             this.setState({ ingredients: response.data })
-    //         })
-    //         .catch(error => {
-    //             this.setState({ error: true })
-    //         })
+        //     axios.get('/ingredients.json')
+        //         .then(response => {
+        //             this.setState({ ingredients: response.data })
+        //         })
+        //         .catch(error => {
+        //             this.setState({ error: true })
+        //         })
     }
 
     updatePurchaseState(ingredients) {
@@ -131,8 +131,8 @@ class BurgerBuilder extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngredientAdded: (ingName) => dispatch({type: actionTypes.ADD_INGREDIENT, ingredientName: ingName}),
-        onIngredientRemoved: (ingName) => dispatch({type: actionTypes.REMOVE_INGREDIENT, ingredientName: ingName})
+        onIngredientAdded: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
+        onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName))
     }
 }
 

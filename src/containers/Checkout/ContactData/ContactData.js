@@ -8,7 +8,8 @@ import classes from './ContactData.module.sass';
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input';
-
+import withErrorHandler from '../../../HOC/withErrorHandler/withErrorHandler';
+import * as actions from '../../../store/actions/index'
 
 class ContactData extends Component {
     state = {
@@ -101,17 +102,16 @@ class ContactData extends Component {
 
     orderHandler = (event) => {
         event.preventDefault()
-        this.setState({ loading: true })
         const formData = {}
         for (let formElementIdentifier in this.state.orderForm) {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value
         }
-
         const order = {
             ingredients: this.props.ings,
             price: this.props.price, //this must be on the server
             orderData: formData
         }
+        this.props.onOrderBurger(order)
     }
 
     checkValidity(value, rules) {
@@ -204,4 +204,8 @@ const mapStateToProps = state => ({
     price: state.totalPrice
 })
 
-export default connect(mapStateToProps)(ContactData)
+const mapDispatchToProps = dispatch => {
+    onOrderBurger: (orderData) => dispatch(actions.purchaseBurgerStart(orderData))
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios))

@@ -17,7 +17,6 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount() {
-        console.log('<BurgerBuilder> Did Mount')
         this.props.onInitIngredients()
     }
 

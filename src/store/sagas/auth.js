@@ -7,6 +7,6 @@ export function* logoutSaga(action) {
     yield localStorage.removeItem('expirationDate')
     yield localStorage.removeItem('userId')
     yield put({
-        type: actionTypes.AUTH_SUCCESS
+        type: actionTypes.AUTH_LOGOUT
     })
 }
